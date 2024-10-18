@@ -20,9 +20,9 @@ class Fazenda(models.Model):
     CULTURAS_CHOICES = [
         ('soja', 'Soja'),
         ('milho', 'Milho'),
-        ('trigo', 'Trigo'),
         ('algodao', 'Algodão'),
-        # Adicione mais opções conforme necessário
+        ('cafe', 'Café'),
+        ('cana', 'Cana de Açúcar'),
     ]
 
     culturas = models.TextField(choices=CULTURAS_CHOICES)
