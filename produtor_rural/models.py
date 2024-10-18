@@ -1,8 +1,9 @@
 from django.db import models
 from django.forms import ValidationError
+from .fields import CPFOrCNPJField
 
 class ProdutorRural(models.Model):
-    cpf_cnpj = models.CharField(max_length=14, unique=True)
+    cpf_cnpj = CPFOrCNPJField(unique=True)
     nome = models.CharField(max_length=100)
 
     def __str__(self):

@@ -7,7 +7,7 @@ from .forms import FazendaForm
 
 @admin.register(ProdutorRural)
 class ProdutorRuralAdmin(admin.ModelAdmin):
-    list_display = ('cpf_cnpj', 'nome')
+    list_display = ('nome', 'cpf_cnpj')
     search_fields = ('cpf_cnpj', 'nome')
     list_filter = ('nome',)
     ordering = ('nome',)
