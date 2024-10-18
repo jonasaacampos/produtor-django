@@ -25,11 +25,14 @@ class Fazenda(models.Model):
         ('cana', 'Cana de Açúcar'),
     ]
 
-    culturas = models.TextField(choices=CULTURAS_CHOICES)
+    culturas = models.TextField()
 
     def __str__(self):
         return self.nome   
     
+    def get_culturas_display(self):
+        return [dict(self.CULTURAS_CHOICES).get(cultura) for cultura in self.culturas.split(',')]
+
     def clean(self):
         if self.area_agricultavel + self.area_vegetacao > self.area_total:
             raise ValidationError("A soma da área agricultável e vegetação não pode exceder a área total.")

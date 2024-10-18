@@ -10,3 +10,6 @@ class FazendaForm(forms.ModelForm):
     class Meta:
         model = Fazenda
         fields = '__all__'
+
+    def clean_culturas(self):
+        return ','.join(self.cleaned_data['culturas'])
