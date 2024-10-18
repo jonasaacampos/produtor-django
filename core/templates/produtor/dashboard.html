@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard do Produtor</title>
+</head>
+<body>
+    <h1>Dashboard do Produtor</h1>
+    <p>Total de Fazendas: {{ total_fazendas }}</p>
+    <p>Área Total em Hectares: {{ area_total }}</p>
+
+    <h2>Gráfico por Estado</h2>
+    <ul>
+        {% for estado, quantidade in estado_count.items %}
+            <li>{{ estado }}: {{ quantidade }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Gráfico por Cultura</h2>
+    <ul>
+        {% for cultura, quantidade in cultura_count.items %}
+            <li>{{ cultura }}: {{ quantidade }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Gráfico por Uso de Solo</h2>
+    <ul>
+        <li>Agricultável: {{ uso_solo.Agricultável }} hectares</li>
+        <li>Vegetação: {{ uso_solo.Vegetação }} hectares</li>
+    </ul>
+</body>
+</html>
