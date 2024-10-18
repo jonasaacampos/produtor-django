@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <title>Dashboard do Produtor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
+
 <body>
+
+    {% load static %}
+
     <h1>Dashboard do Produtor</h1>
     <p>Total de Fazendas: {{ total_fazendas }}</p>
     <p>Área Total em Hectares: {{ area_total }}</p>
@@ -12,28 +20,28 @@
     <h2>Produtores</h2>
     <ul>
         {% for produtor in produtores %}
-            <li>{{ produtor.nome }}</li>
+        <li>{{ produtor.nome }}</li>
         {% endfor %}
     </ul>
 
     <h2>Fazendas</h2>
     <ul>
         {% for fazenda in fazendas %}
-            <li>{{ fazenda.nome }} - {{ fazenda.cidade }} - {{ fazenda.estado }}</li>
+        <li>{{ fazenda.nome }} - {{ fazenda.cidade }} - {{ fazenda.estado }}</li>
         {% endfor %}
     </ul>
 
     <h2>Gráfico por Estado</h2>
     <ul>
         {% for item in estado_count %}
-            <li>{{ item.estado }}: {{ item.count }}</li>
+        <li>{{ item.estado }}: {{ item.count }}</li>
         {% endfor %}
     </ul>
 
     <h2>Gráfico por Cultura</h2>
     <ul>
         {% for item in cultura_count %}
-            <li>{{ item.culturas }}: {{ item.count }}</li>
+        <li>{{ item.culturas }}: {{ item.count }}</li>
         {% endfor %}
     </ul>
 
@@ -42,5 +50,19 @@
         <li>Agricultável: {{ area_agricultavel }} hectares</li>
         <li>Vegetação: {{ area_vegetacao }} hectares</li>
     </ul>
+
+
+    <canvas id="graficoUsoSolo" width="400" height="400"></canvas>
+
+    <script>
+        const area_agricultavel = {{ area_agricultavel| safe }};
+        const area_vegetacao = {{ area_vegetacao| safe }};
+    </script>
+    <script src="{% static 'js/grafico-uso-solo.js' %}"></script>
+
+
+
+
 </body>
+
 </html>

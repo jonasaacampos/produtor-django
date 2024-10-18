@@ -25,3 +25,15 @@ def dashboard(request):
         'estado_count': estado_count,
         'cultura_count': cultura_count,
     })
+
+
+def grafico_uso_solo(request):
+    # Supondo que você tenha um único objeto no modelo
+    uso_solo = Fazenda.objects.first()
+    
+    context = {
+        'area_agricultavel': uso_solo.area_agricultavel,
+        'area_vegetacao': uso_solo.area_vegetacao,
+    }
+    
+    return render(request, 'seu_template.html', context)
