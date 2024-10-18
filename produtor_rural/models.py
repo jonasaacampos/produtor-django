@@ -2,6 +2,7 @@ from django.db import models
 from django.forms import ValidationError
 from .fields import CPFOrCNPJField
 from produtor_rural.utils.load_json import load_ibge_UFs
+from dal import autocomplete
 
 class ProdutorRural(models.Model):
     cpf_cnpj = CPFOrCNPJField(unique=True)

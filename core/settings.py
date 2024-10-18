@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'dal', #autocomplete
+    'dal_select2',  #autocomplete
     'produtor_rural',
 ]
 
