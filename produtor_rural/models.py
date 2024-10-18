@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ValidationError
 
 class ProdutorRural(models.Model):
     cpf_cnpj = models.CharField(max_length=14, unique=True)
@@ -15,11 +16,20 @@ class Fazenda(models.Model):
     area_total = models.FloatField()
     area_agricultavel = models.FloatField()
     area_vegetacao = models.FloatField()
-    culturas = models.CharField(max_length=255)  # Ex: "Soja, Milho"
+
+    CULTURAS_CHOICES = [
+        ('soja', 'Soja'),
+        ('milho', 'Milho'),
+        ('trigo', 'Trigo'),
+        ('algodao', 'Algodão'),
+        # Adicione mais opções conforme necessário
+    ]
+
+    culturas = models.TextField(choices=CULTURAS_CHOICES)
 
     def __str__(self):
-        return self.nome
-
+        return self.nome   
+    
     def clean(self):
         if self.area_agricultavel + self.area_vegetacao > self.area_total:
-            raise ValueError("A soma da área agricultável e vegetação não pode exceder a área total.")
+            raise ValidationError("A soma da área agricultável e vegetação não pode exceder a área total.")

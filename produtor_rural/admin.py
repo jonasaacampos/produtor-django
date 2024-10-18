@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import ProdutorRural, Fazenda
+from .forms import FazendaForm
 
 # admin.site.register(ProdutorRural)
 # admin.site.register(Fazenda)
@@ -17,7 +18,8 @@ class ProdutorRuralAdmin(admin.ModelAdmin):
 
 @admin.register(Fazenda)
 class FazendaAdmin(admin.ModelAdmin):
-    list_display = ('produtor', 'nome', 'cidade', 'estado', 'area_total', 'area_agricultavel', 'area_vegetacao', 'culturas')
+    form = FazendaForm
+    list_display = ('nome', 'produtor', 'cidade', 'estado', 'area_total', 'area_agricultavel', 'area_vegetacao', 'culturas')
     search_fields = ('produtor__nome', 'nome', 'cidade', 'estado', 'culturas')
     list_filter = ('produtor', 'cidade', 'estado')
     ordering = ('produtor', 'nome')
