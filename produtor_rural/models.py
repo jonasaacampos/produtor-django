@@ -1,6 +1,7 @@
 from django.db import models
 from django.forms import ValidationError
 from .fields import CPFOrCNPJField
+from produtor_rural.utils.load_json import load_ibge_UFs
 
 class ProdutorRural(models.Model):
     cpf_cnpj = CPFOrCNPJField(unique=True)
@@ -12,8 +13,9 @@ class ProdutorRural(models.Model):
 class Fazenda(models.Model):
     produtor = models.ForeignKey(ProdutorRural, related_name='fazendas', on_delete=models.CASCADE)
     nome = models.CharField(max_length=100)
+    # estado = models.CharField(max_length=2)
+    estado = models.CharField(max_length=2, choices=[(sigla, sigla) for sigla in load_ibge_UFs()])
     cidade = models.CharField(max_length=100)
-    estado = models.CharField(max_length=2)
     area_total = models.FloatField()
     area_agricultavel = models.FloatField()
     area_vegetacao = models.FloatField()
