@@ -9,4 +9,13 @@
 ## Configurando Django
 
 - Inserir app criado no arquivo `settings.py` do core na sessção `INSTALLED_APPS`
-- 
+
+
+## executar app
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+
+```
