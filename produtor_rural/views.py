@@ -1,36 +1,27 @@
-# produtor/views.py
+# produtor_rural/views.py
 
 from django.shortcuts import render
 from .models import ProdutorRural, Fazenda
+from django.db.models import Count, Sum
 
 def dashboard(request):
     produtores = ProdutorRural.objects.all()
-    total_fazendas = sum(produtor.fazendas.count() for produtor in produtores)
-    area_total = sum(fazenda.area_total for produtor in produtores for fazenda in produtor.fazendas.all())
+    fazendas = Fazenda.objects.all()
+    total_fazendas = fazendas.count()
+    area_total = fazendas.aggregate(Sum('area_total'))['area_total__sum']
+    area_agricultavel = fazendas.aggregate(Sum('area_agricultavel'))['area_agricultavel__sum']
+    area_vegetacao = fazendas.aggregate(Sum('area_vegetacao'))['area_vegetacao__sum']
     
-    estado_count = {}
-    cultura_count = {}
-    uso_solo = {"Agricultável": 0, "Vegetação": 0}
+    estado_count = fazendas.values('estado').annotate(count=Count('estado'))
+    cultura_count = fazendas.values('culturas').annotate(count=Count('culturas'))
 
-    for produtor in produtores:
-        for fazenda in produtor.fazendas.all():
-            # Contagem por estado
-            estado_count[fazenda.estado] = estado_count.get(fazenda.estado, 0) + 1
-            
-            # Contagem por cultura
-            for cultura in fazenda.culturas.split(", "):
-                cultura_count[cultura] = cultura_count.get(cultura, 0) + 1
-            
-            # Soma de áreas por uso do solo
-            uso_solo["Agricultável"] += fazenda.area_agricultavel
-            uso_solo["Vegetação"] += fazenda.area_vegetacao
-
-    context = {
+    return render(request, 'produtor/dashboard.html', {  # Corrigido o caminho do template
+        'produtores': produtores,
+        'fazendas': fazendas,
         'total_fazendas': total_fazendas,
         'area_total': area_total,
+        'area_agricultavel': area_agricultavel,
+        'area_vegetacao': area_vegetacao,
         'estado_count': estado_count,
         'cultura_count': cultura_count,
-        'uso_solo': uso_solo,
-    }
-    
-    return render(request, 'produtor/dashboard.html', context)
+    })

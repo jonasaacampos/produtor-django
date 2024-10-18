@@ -9,24 +9,38 @@
     <p>Total de Fazendas: {{ total_fazendas }}</p>
     <p>Área Total em Hectares: {{ area_total }}</p>
 
+    <h2>Produtores</h2>
+    <ul>
+        {% for produtor in produtores %}
+            <li>{{ produtor.nome }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Fazendas</h2>
+    <ul>
+        {% for fazenda in fazendas %}
+            <li>{{ fazenda.nome }} - {{ fazenda.cidade }} - {{ fazenda.estado }}</li>
+        {% endfor %}
+    </ul>
+
     <h2>Gráfico por Estado</h2>
     <ul>
-        {% for estado, quantidade in estado_count.items %}
-            <li>{{ estado }}: {{ quantidade }}</li>
+        {% for item in estado_count %}
+            <li>{{ item.estado }}: {{ item.count }}</li>
         {% endfor %}
     </ul>
 
     <h2>Gráfico por Cultura</h2>
     <ul>
-        {% for cultura, quantidade in cultura_count.items %}
-            <li>{{ cultura }}: {{ quantidade }}</li>
+        {% for item in cultura_count %}
+            <li>{{ item.culturas }}: {{ item.count }}</li>
         {% endfor %}
     </ul>
 
     <h2>Gráfico por Uso de Solo</h2>
     <ul>
-        <li>Agricultável: {{ uso_solo.Agricultável }} hectares</li>
-        <li>Vegetação: {{ uso_solo.Vegetação }} hectares</li>
+        <li>Agricultável: {{ area_agricultavel }} hectares</li>
+        <li>Vegetação: {{ area_vegetacao }} hectares</li>
     </ul>
 </body>
 </html>
