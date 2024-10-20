@@ -125,6 +125,33 @@ def generate_pie_chart_solo_usage(request):
 
     return HttpResponse(buffer, content_type="image/png")
 
+def generate_bar_chart_solo_usage(request):
+    # Exemplo de dados
+    solo_agricultavel = get_solo_agricultavel_count()
+    solo_preservado = get_solo_preservado_count()
+
+    # Calcular as áreas totais em hectares
+    total_agricultavel = sum(item["area_agricultavel"] for item in solo_agricultavel)
+    total_preservado = sum(item["area_vegetacao"] for item in solo_preservado)
+
+    # Rótulos e tamanhos para o gráfico de barras
+    labels = ["Área Agricultável", "Área Preservada"]
+    sizes = [total_agricultavel, total_preservado]
+
+    # Gerar o gráfico de barras
+    fig, ax = plt.subplots(figsize=(8, 8))
+    ax.bar(labels, sizes, color=["#FF6384", "#36A2EB"])
+    ax.set_title("Comparação de Uso do Solo em Hectares")
+    ax.set_ylabel("Hectares")
+
+    # Salvar o gráfico em um buffer
+    buffer = io.BytesIO()
+    plt.savefig(buffer, format="png")
+    plt.close(fig)
+    buffer.seek(0)
+
+    return HttpResponse(buffer, content_type="image/png")
+
 
 ############################################################################################################
 #                                           Funções auxiliares                                             #

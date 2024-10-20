@@ -197,6 +197,38 @@
     </section>
 
 
+    <!-- SOLO USAGE CHARTS -->
+
+    <section id="culturas" class="rounded-section bg-light">
+        <div class="container">
+            <h2>Culturas</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <img id="estado_chart" src="{% url 'generate_bar_chart_solo_usage' %}" alt="Gráfico por Estado"
+                            class="card-img-top" data-bs-toggle="modal" data-bs-target="#imageModal">
+                        <div class="card-body">
+                            <h5 class="card-title">Cultivares</h5>
+                            <p class="card-text">Tipos de cultivos</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card">
+                        <img id="estado_chart" src="{% url 'generate_pie_chart_solo_usage' %}" alt="Uso do solo"
+                        class="card-img-top" data-bs-toggle="modal" data-bs-target="#imageModal">
+                        <div class="card-body">
+                            <h5 class="card-title">Uso do solo</h5>
+                            <p class="card-text">Uso do solo (plantio X preservação)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <section id="servicos" class="rounded-section bg-white">
         <div class="container">
             <h2>Produtores</h2>
