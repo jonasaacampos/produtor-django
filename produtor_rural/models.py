@@ -8,6 +8,10 @@ class ProdutorRural(models.Model):
     cpf_cnpj = CPFOrCNPJField(unique=True)
     nome = models.CharField(max_length=100)
 
+    class Meta:
+        verbose_name = 'Produtor Rural'
+        verbose_name_plural = 'Produtores Rurais'    
+    
     def __str__(self):
         return self.nome
 
@@ -30,6 +34,10 @@ class Fazenda(models.Model):
     ]
 
     culturas = models.TextField()
+
+    class Meta:
+        verbose_name = 'Fazenda'
+        verbose_name_plural = 'Fazendas'
 
     def __str__(self):
         return self.nome   
