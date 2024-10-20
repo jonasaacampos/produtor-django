@@ -49,3 +49,33 @@ class DashboardViewTest(TestCase):
         self.assertContains(response, "Soja")
         self.assertContains(response, "Milho")
         self.assertContains(response, "Trigo")
+
+
+class GenerateBarHorizontalChartSoloUsageTest(TestCase):
+            def setUp(self):
+                self.produtor1 = ProdutorRural.objects.create(
+                    cpf_cnpj="12345678901234",
+                    nome="João Silva"
+                )
+                self.fazenda1 = Fazenda.objects.create(
+                    produtor=self.produtor1,
+                    nome="Fazenda Boa Vista",
+                    cidade="Cidade Exemplo",
+                    estado="EX",
+                    area_total=100.0,
+                    area_agricultavel=80.0,
+                    area_vegetacao=20.0,
+                    culturas="Soja, Milho"
+                )
+
+            def test_generate_bar_horizontal_chart_solo_usage_status_code(self):
+                response = self.client.get(reverse('generate_bar_horizontal_chart_solo_usage'))
+                self.assertEqual(response.status_code, 200)
+
+            def test_generate_bar_horizontal_chart_solo_usage_content_type(self):
+                response = self.client.get(reverse('generate_bar_horizontal_chart_solo_usage'))
+                self.assertEqual(response['Content-Type'], 'image/png')
+
+            def test_generate_bar_horizontal_chart_solo_usage_content(self):
+                response = self.client.get(reverse('generate_bar_horizontal_chart_solo_usage'))
+                self.assertGreater(len(response.content), 0)
