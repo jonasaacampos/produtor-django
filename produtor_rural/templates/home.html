@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Direto do produtor</title>
+    <title>Brain Agriculture</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
@@ -86,6 +86,16 @@
         .nav-link:hover {
             color: #007bff;
         }
+
+        blockquote{
+            background-color: #f8f9fa;
+            font-size: x-large;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
     </style>
 </head>
 
@@ -96,7 +106,7 @@
     <header class="bg-light">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-                <a class="navbar-brand" href="#">Direto do Produtor</a>
+                <a class="navbar-brand" href="#">Brain Agriculture</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -109,7 +119,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/dashboard">Detalhes dos cadastros</a>
                         </li>
-                       
+
                     </ul>
                 </div>
             </div>
@@ -120,18 +130,30 @@
 
         <div>
             <h1>Cadastre e forneça para todo o Brasil</h1>
-            <a href="/admin" class="btn btn-primary">Cadastrar</a>
+            <a href="/admin" class="btn btn-primary">Cadastrar / Acessar Sistema</a>
         </div>
     </section>
 
     <section id="sobre" class="rounded-section bg-white">
         <div class="container">
+            <blockquote class="quote">
+                Esta página gera e atualiza os relatórios sempre que é atualizada. <br>
+                Se algum gráfico não aparecer, recarregue a página.
+
+            </blockquote>
+            
+            <hr>
             <h2>Sobre Nós</h2>
-            <p>Fundada em [Ano], a Sua Empresa é líder no desenvolvimento de metais sanitários de alta qualidade.</p>
+            <p>Fundada com o objetivo de revolucionar o setor agrícola, a Brain Agriculture é líder no desenvolvimento
+                de
+                soluções tecnológicas para o cadastro e gestão de produtores rurais.</p>
             <h4>Missão</h4>
-            <p>Prover produtos que garantam conforto e sustentabilidade.</p>
+            <p>Prover produtos que garantam conforto e sustentabilidade, facilitando o cadastro, edição e exclusão de
+                produtores rurais, além de oferecer um dashboard completo para análise de dados.</p>
             <h4>Valores</h4>
-            <p>Qualidade, Inovação, Sustentabilidade e Atendimento ao Cliente.</p>
+            <p>Qualidade, Inovação, Sustentabilidade e Atendimento ao Cliente. Valorizamos a precisão dos dados, a
+                facilidade de uso e a integração eficiente entre front-end e back-end, utilizando python, django, dokcer
+                e aws.</p>
         </div>
     </section>
 
@@ -143,8 +165,9 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
-                        <img id="estado_chart" src="{% url 'generate_bar_chart_farms_per_state' %}" alt="Gráfico por Estado"
-                            class="card-img-top" data-bs-toggle="modal" data-bs-target="#imageModal">
+                        <img id="estado_chart" src="{% url 'generate_bar_chart_farms_per_state' %}"
+                            alt="Gráfico por Estado" class="card-img-top" data-bs-toggle="modal"
+                            data-bs-target="#imageModal">
                         <div class="card-body">
                             <h5 class="card-title">Fazendas por UF</h5>
                             <p class="card-text">Gráfico de frequência</p>
@@ -153,8 +176,9 @@
                 </div>
                 <div class="col-md-6">
                     <div class="card">
-                        <img id="estado_pie_chart" src="{% url 'generate_pie_chart_farms_per_state' %}" alt="Gráfico por Estado"
-                            class="card-img-top" data-bs-toggle="modal" data-bs-target="#imageModal">
+                        <img id="estado_pie_chart" src="{% url 'generate_pie_chart_farms_per_state' %}"
+                            alt="Gráfico por Estado" class="card-img-top" data-bs-toggle="modal"
+                            data-bs-target="#imageModal">
                         <div class="card-body">
                             <h5 class="card-title">Fazendas por UF</h5>
                             <p class="card-text">Gráfico de pizza</p>
@@ -165,7 +189,7 @@
         </div>
     </section>
 
-<!-- PLANTED TYPE CHATS -->
+    <!-- PLANTED TYPE CHATS -->
 
     <section id="culturas" class="rounded-section bg-light">
         <div class="container">
@@ -173,19 +197,20 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
-                        <img id="estado_chart" src="{% url 'generate_stacked_bar_chart_culturas' %}" alt="Gráfico por Estado"
-                            class="card-img-top" data-bs-toggle="modal" data-bs-target="#imageModal">
+                        <img id="estado_chart" src="{% url 'generate_stacked_bar_chart_culturas' %}"
+                            alt="Gráfico por Estado" class="card-img-top" data-bs-toggle="modal"
+                            data-bs-target="#imageModal">
                         <div class="card-body">
                             <h5 class="card-title">Cultivares</h5>
                             <p class="card-text">Tipos de cultivos</p>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-md-6">
                     <div class="card">
                         <img id="estado_chart" src="{% url 'generate_pie_chart_culturas' %}" alt="Uso do solo"
-                        class="card-img-top" data-bs-toggle="modal" data-bs-target="#imageModal">
+                            class="card-img-top" data-bs-toggle="modal" data-bs-target="#imageModal">
                         <div class="card-body">
                             <h5 class="card-title">Uso do solo</h5>
                             <p class="card-text">Uso do solo (plantio X preservação)</p>
@@ -205,19 +230,20 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
-                        <img id="estado_chart" src="{% url 'generate_bar_horizontal_chart_solo_usage' %}" alt="Gráfico por Estado"
-                            class="card-img-top" data-bs-toggle="modal" data-bs-target="#imageModal">
+                        <img id="estado_chart" src="{% url 'generate_bar_horizontal_chart_solo_usage' %}"
+                            alt="Gráfico por Estado" class="card-img-top" data-bs-toggle="modal"
+                            data-bs-target="#imageModal">
                         <div class="card-body">
                             <h5 class="card-title">Cultivares</h5>
                             <p class="card-text">Tipos de cultivos</p>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-md-6">
                     <div class="card">
                         <img id="estado_chart" src="{% url 'generate_pie_chart_solo_usage' %}" alt="Uso do solo"
-                        class="card-img-top" data-bs-toggle="modal" data-bs-target="#imageModal">
+                            class="card-img-top" data-bs-toggle="modal" data-bs-target="#imageModal">
                         <div class="card-body">
                             <h5 class="card-title">Uso do solo</h5>
                             <p class="card-text">Uso do solo (plantio X preservação)</p>
@@ -228,23 +254,18 @@
         </div>
     </section>
 
-
-    <section id="servicos" class="rounded-section bg-white">
-        <div class="container">
-            <h2>Produtores</h2>
-
-        </div>
-    </section>
-
     <section id="contato" class="rounded-section bg-light">
         <div class="container">
-            <h2>Contato</h2>
+            <h2>Desenvolvido com ❤️ por:</h2>
 
             <div class="mt-4">
-                <h5>Informações de Contato</h5>
-                <p>Endereço: Rua Exemplo, 123 - Cidade, Estado</p>
-                <p>Telefone: (11) 1234-5678</p>
-                <p>Email: contato@empresa.com</p>
+                <h5>Jonas Campos</h5>
+                <p>
+                    <a href="https://api.whatsapp.com/send?phone=5519994698017&text=Te%20achei%20pelo%20*Brain%20Agriculture*%20e%20preciso%20de%20um%20desenvolvedor%20%20para%20alguns%20projetos."
+                        target="_blank">Whatsapp
+                    </a>
+                </p>
+                <p>Email: <a href="mailto:jonasaacampos@gmail.com">Enviar email</a> </p>
             </div>
         </div>
     </section>
@@ -265,10 +286,10 @@
     </div>
 
     <footer class="bg-light text-center py-4">
-        <p>&copy; 2024 Sua Empresa. Todos os direitos reservados.</p>
+        <p>&copy; 2024 Brain Agriculture. Todos os direitos reservados.</p>
         <div>
-            <a href="#">Política de Privacidade</a> |
-            <a href="#">Termos de Uso</a>
+            <a href="https://www.linkedin.com/in/jonasaacampos">Linkedin</a> |
+            <a href="https://github.com/jonasaacampos">Github</a>
         </div>
 
     </footer>
