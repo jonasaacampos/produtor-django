@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direto do produtor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            scroll-behavior: smooth;
+            background-color: #f8f9fa;
+        }
+
+        .hero {
+            background: url('{% static "img/farm-hero.jpg" %}') no-repeat center center;
+            background-size: cover;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .rounded-section {
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card {
+            border-radius: 15px;
+        }
+
+        footer {
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .card {
+            border-radius: 15px;
+        }
+
+        footer {
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, padding 0.3s;
+        }
+
+        header.scrolled {
+            background-color: #fff;
+            padding: 10px 0;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .navbar-toggler {
+            border: none;
+            outline: none;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url('data:image/svg+xml;charset=utf8,%3Csvg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath stroke="rgba%28255, 255, 255, 0.5%29" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
+        }
+
+        .nav-link {
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <header class="bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">Direto do Produtor</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#sobre">Sobre Nós</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/dashboard">Detalhes dos cadastros</a>
+                        </li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+
+        <div>
+            <h1>Cadastre e forneça para todo o Brasil</h1>
+            <a href="/admin" class="btn btn-primary">Cadastrar</a>
+        </div>
+    </section>
+
+    <section id="sobre" class="rounded-section bg-white">
+        <div class="container">
+            <h2>Sobre Nós</h2>
+            <p>Fundada em [Ano], a Sua Empresa é líder no desenvolvimento de metais sanitários de alta qualidade.</p>
+            <h4>Missão</h4>
+            <p>Prover produtos que garantam conforto e sustentabilidade.</p>
+            <h4>Valores</h4>
+            <p>Qualidade, Inovação, Sustentabilidade e Atendimento ao Cliente.</p>
+        </div>
+    </section>
+
+    <section id="producao-uf" class="rounded-section bg-light">
+        <div class="container">
+            <h2>Fazendas por UF</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <img id="estado_chart" src="{% url 'generate_chart' %}" alt="Gráfico por Estado"
+                            class="card-img-top" data-bs-toggle="modal" data-bs-target="#imageModal">
+                        <div class="card-body">
+                            <h5 class="card-title">Fazendas por UF</h5>
+                            <p class="card-text">Gráfico de frequência</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <img id="estado_pie_chart" src="{% url 'generate_pie_chart' %}" alt="Gráfico por Estado"
+                            class="card-img-top" data-bs-toggle="modal" data-bs-target="#imageModal">
+                        <div class="card-body">
+                            <h5 class="card-title">Fazendas por UF</h5>
+                            <p class="card-text">Gráfico de pizza</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="culturas" class="rounded-section bg-light">
+        <div class="container">
+            <h2>Culturas</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <img id="estado_chart" src="{% url 'generate_pie_chart_culturas' %}" alt="Gráfico por Estado"
+                            class="card-img-top" data-bs-toggle="modal" data-bs-target="#imageModal">
+                        <div class="card-body">
+                            <h5 class="card-title">Cultivares</h5>
+                            <p class="card-text">Tipos de cultivos</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="card">
+                        <img id="estado_chart" src="{% url 'generate_pie_chart_solo_usage' %}" alt="Gráfico por Estado"
+                        class="card-img-top" data-bs-toggle="modal" data-bs-target="#imageModal">
+                        <div class="card-body">
+                            <h5 class="card-title">Uso do solo</h5>
+                            <p class="card-text">Uso do solo (plantio X preservação)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="servicos" class="rounded-section bg-white">
+        <div class="container">
+            <h2>Produtores</h2>
+
+        </div>
+    </section>
+
+    <section id="contato" class="rounded-section bg-light">
+        <div class="container">
+            <h2>Contato</h2>
+
+            <div class="mt-4">
+                <h5>Informações de Contato</h5>
+                <p>Endereço: Rua Exemplo, 123 - Cidade, Estado</p>
+                <p>Telefone: (11) 1234-5678</p>
+                <p>Email: contato@empresa.com</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel">Detalhes do gráfico</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="modalImage" src="" alt="Detalhes do gráfico" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light text-center py-4">
+        <p>&copy; 2024 Sua Empresa. Todos os direitos reservados.</p>
+        <div>
+            <a href="#">Política de Privacidade</a> |
+            <a href="#">Termos de Uso</a>
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+
+    <!-- Header Fixo -->
+    <script>
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+    </script>
+
+    <!-- modal script -->
+    <script>
+        document.querySelectorAll('img[data-bs-toggle="modal"]').forEach(function (img) {
+            img.addEventListener('click', function () {
+                var imgSrc = this.src;
+                document.getElementById('modalImage').src = imgSrc;
+            });
+        });
+    </script>
+
+</body>
+
+</html>

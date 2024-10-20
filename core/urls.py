@@ -1,11 +1,12 @@
 from django.contrib import admin
 from django.urls import path, include
 from django.http import HttpResponse
+from django.shortcuts import render
 
 from produtor_rural import views
 
 def home(request):
-    return HttpResponse("Página inicial")
+    return render(request, 'home.html')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
