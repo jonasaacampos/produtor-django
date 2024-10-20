@@ -8,6 +8,7 @@ from .views import (
     generate_pie_chart_solo_usage,
     generate_bar_chart_solo_usage,
     generate_stacked_bar_chart_culturas,
+    generate_bar_horizontal_chart_solo_usage
 )
 from .autocomplete import CidadeAutocomplete
 
@@ -46,5 +47,10 @@ urlpatterns = [
         "generate-stacked-bar-chart/",
         generate_stacked_bar_chart_culturas,
         name="generate_stacked_bar_chart_culturas",
+    ),
+    path(
+        "generate_bar_horizontal_chart_solo_usage/",
+        generate_bar_horizontal_chart_solo_usage,
+        name="generate_bar_horizontal_chart_solo_usage",
     ),
 ]
