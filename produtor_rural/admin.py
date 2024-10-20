@@ -19,7 +19,7 @@ class ProdutorRuralAdmin(admin.ModelAdmin):
 @admin.register(Fazenda)
 class FazendaAdmin(admin.ModelAdmin):
     form = FazendaForm
-    list_display = ('nome', 'produtor', 'cidade', 'estado', 'area_total', 'area_agricultavel', 'area_vegetacao', 'culturas')
+    list_display = ('nome', 'produtor', 'cidade', 'estado', 'area_total', 'culturas')
     search_fields = ('produtor__nome', 'nome', 'cidade', 'estado', 'culturas')
     list_filter = ('produtor', 'cidade', 'estado')
     ordering = ('produtor', 'nome')

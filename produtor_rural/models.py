@@ -20,14 +20,15 @@ class ProdutorRural(models.Model):
         return self.nome
 
 class Fazenda(models.Model):
+    id = models.AutoField(primary_key=True, editable=False)
     produtor = models.ForeignKey(ProdutorRural, related_name='fazendas', on_delete=models.CASCADE)
     nome = models.CharField(max_length=100)
     # estado = models.CharField(max_length=2)
     estado = models.CharField(max_length=2, choices=[(sigla, sigla) for sigla in load_ibge_UFs()])
     cidade = models.CharField(max_length=100)
-    area_total = models.FloatField()
-    area_agricultavel = models.FloatField()
-    area_vegetacao = models.FloatField()
+    area_total = models.FloatField(null=False, blank=False)
+    area_agricultavel = models.FloatField(null=False, blank=False)
+    area_vegetacao = models.FloatField(null=False, blank=False)
 
     CULTURAS_CHOICES = [
         ('soja', 'Soja'),
