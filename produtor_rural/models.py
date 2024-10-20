@@ -43,6 +43,10 @@ class Fazenda(models.Model):
         verbose_name = 'Fazenda'
         verbose_name_plural = 'Fazendas'
 
+    def save(self, *args, **kwargs):
+        self.nome = self.nome.upper()
+        super(Fazenda, self).save(*args, **kwargs)
+    
     def __str__(self):
         return self.nome   
     
