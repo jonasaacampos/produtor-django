@@ -67,6 +67,34 @@ def generate_pie_chart_farms_per_state(request):
 
 # Gráfico de Culturas Cultivadas
 
+def generate_stacked_bar_chart_culturas(request):
+    cultura_count = get_cultura_count()
+
+    if not cultura_count:
+        return HttpResponse("No data available", content_type="text/plain")
+
+    if not isinstance(cultura_count, list) or not all(
+        isinstance(item, dict) for item in cultura_count
+    ):
+        return HttpResponse("Invalid data format", content_type="text/plain")
+    if not all("culturas" in item and "count" in item for item in cultura_count):
+        return HttpResponse("Invalid data format", content_type="text/plain")
+
+    df = pd.DataFrame(cultura_count)
+
+    # Gerar o gráfico de barras empilhadas
+    plt.figure(figsize=(8,8))
+    df.set_index('culturas').T.plot(kind='bar', stacked=True)
+    plt.title("Gráfico de Culturas Cultivadas")
+    plt.xlabel("Culturas")
+    plt.ylabel("Contagem")
+    
+    buffer = io.BytesIO()
+    plt.savefig(buffer, format="png")
+    plt.close()  # Fechar a figura para liberar memória
+    buffer.seek(0)
+    return HttpResponse(buffer, content_type="image/png")
+
 def generate_pie_chart_culturas(request):
     cultura_count = get_cultura_count()
 
