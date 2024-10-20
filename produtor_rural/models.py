@@ -10,7 +10,11 @@ class ProdutorRural(models.Model):
 
     class Meta:
         verbose_name = 'Produtor Rural'
-        verbose_name_plural = 'Produtores Rurais'    
+        verbose_name_plural = 'Produtores Rurais'
+
+    def save(self, *args, **kwargs):
+        self.nome = self.nome.title()
+        super(ProdutorRural, self).save(*args, **kwargs)   
     
     def __str__(self):
         return self.nome
