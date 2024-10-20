@@ -8,17 +8,24 @@ services:
       - .:/app
     ports:
       - "8000:8000"
+    environment:
+      - DEBUG=1
+      - DB_NAME=django_db
+      - DB_USER=django_user
+      - DB_PASSWORD=django_password
+      - DB_HOST=db
+      - DB_PORT=5432
     depends_on:
       - db
 
   db:
     image: postgres:13
-    environment:
-      POSTGRES_DB: mydatabase
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=django_db
+      - POSTGRES_USER=django_user
+      - POSTGRES_PASSWORD=django_password
 
 volumes:
   postgres_data:

@@ -1,19 +1,25 @@
-# Usar uma imagem base oficial do Python
+# Use a imagem oficial do Python como base
 FROM python:3.9-slim
 
-# Definir o diretório de trabalho
+# Instale dependências do sistema
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Defina o diretório de trabalho no container
 WORKDIR /app
 
-# Copiar os arquivos de requisitos
-COPY requirements.txt /app/
+# Copie o arquivo de requisitos para o diretório de trabalho
+COPY requirements.txt .
 
-# Instalar as dependências
+# Instale as dependências do Python
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar o código da aplicação
-COPY . /app/
+# Copie o restante do código da aplicação
+COPY . .
 
-# Expor a porta que o Django usará
+# Exponha a porta que o Django usará
 EXPOSE 8000
 
 # Comando para rodar a aplicação
