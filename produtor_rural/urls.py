@@ -8,7 +8,7 @@ from .views import (
     generate_pie_chart_solo_usage,
     generate_bar_chart_solo_usage,
     generate_stacked_bar_chart_culturas,
-    generate_bar_horizontal_chart_solo_usage
+    generate_bar_horizontal_chart_solo_usage,
 )
 from .autocomplete import CidadeAutocomplete
 
@@ -53,4 +53,5 @@ urlpatterns = [
         generate_bar_horizontal_chart_solo_usage,
         name="generate_bar_horizontal_chart_solo_usage",
     ),
+
 ]

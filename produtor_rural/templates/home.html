@@ -87,7 +87,7 @@
             color: #007bff;
         }
 
-        blockquote{
+        blockquote {
             background-color: #f8f9fa;
             font-size: x-large;
             border-radius: 15px;
@@ -95,7 +95,6 @@
             margin-bottom: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
     </style>
 </head>
 
@@ -136,12 +135,16 @@
 
     <section id="sobre" class="rounded-section bg-white">
         <div class="container">
-            <blockquote class="quote">
-                Esta página gera e atualiza os relatórios sempre que é atualizada. <br>
-                Se algum gráfico não aparecer, recarregue a página.
 
+            <div class="container">
+                <h1>Relatórios</h1>
+                <button class="btn btn-secondary" onclick="downloadImages()">Gerar Todos os Relatórios</button>
+            </div>
+            <blockquote>
+                <p>“A agricultura é a arte de saber esperar.”</p>
+                <small>Paulo Freire</small>
             </blockquote>
-            
+
             <hr>
             <h2>Sobre Nós</h2>
             <p>Fundada com o objetivo de revolucionar o setor agrícola, a Brain Agriculture é líder no desenvolvimento
@@ -157,6 +160,7 @@
         </div>
     </section>
 
+
     <!-- FARM PER STATE CHARTS -->
 
     <section id="producao-uf" class="rounded-section bg-light">
@@ -165,8 +169,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
-                        <img id="estado_chart" src="{% url 'generate_bar_chart_farms_per_state' %}"
-                            alt="Gráfico por Estado" class="card-img-top" data-bs-toggle="modal"
+                        <img src="{% static 'img/charts/bar_chart_farms_per_state.png' %}"
+                            alt="Gráfico de barras Fazendas X Estado" class="card-img-top" data-bs-toggle="modal"
                             data-bs-target="#imageModal">
                         <div class="card-body">
                             <h5 class="card-title">Fazendas por UF</h5>
@@ -176,8 +180,8 @@
                 </div>
                 <div class="col-md-6">
                     <div class="card">
-                        <img id="estado_pie_chart" src="{% url 'generate_pie_chart_farms_per_state' %}"
-                            alt="Gráfico por Estado" class="card-img-top" data-bs-toggle="modal"
+                        <img src="{% static 'img/charts/pie_chart_farms_per_state.png' %}"
+                            alt="Gráfico de pizza Fazendas X Estado" class="card-img-top" data-bs-toggle="modal"
                             data-bs-target="#imageModal">
                         <div class="card-body">
                             <h5 class="card-title">Fazendas por UF</h5>
@@ -197,8 +201,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
-                        <img id="estado_chart" src="{% url 'generate_stacked_bar_chart_culturas' %}"
-                            alt="Gráfico por Estado" class="card-img-top" data-bs-toggle="modal"
+                        <img src="{% static 'img/charts/stacked_bar_chart_culturas.png' %}"
+                            alt="Gráfico de Barras Culturas plantadas" class="card-img-top" data-bs-toggle="modal"
                             data-bs-target="#imageModal">
                         <div class="card-body">
                             <h5 class="card-title">Cultivares</h5>
@@ -209,7 +213,7 @@
 
                 <div class="col-md-6">
                     <div class="card">
-                        <img id="estado_chart" src="{% url 'generate_pie_chart_culturas' %}" alt="Uso do solo"
+                        <img src="{% static 'img/charts/pie_chart_culturas.png' %}" alt="Gráfico Culturas plantadas"
                             class="card-img-top" data-bs-toggle="modal" data-bs-target="#imageModal">
                         <div class="card-body">
                             <h5 class="card-title">Uso do solo</h5>
@@ -230,8 +234,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
-                        <img id="estado_chart" src="{% url 'generate_bar_horizontal_chart_solo_usage' %}"
-                            alt="Gráfico por Estado" class="card-img-top" data-bs-toggle="modal"
+                        <img src="{% static 'img/charts/bar_horizontal_chart_solo_usage.png' %}"
+                            alt="Gráfico Barras horizontais Uso do Solo" class="card-img-top" data-bs-toggle="modal"
                             data-bs-target="#imageModal">
                         <div class="card-body">
                             <h5 class="card-title">Cultivares</h5>
@@ -242,8 +246,9 @@
 
                 <div class="col-md-6">
                     <div class="card">
-                        <img id="estado_chart" src="{% url 'generate_pie_chart_solo_usage' %}" alt="Uso do solo"
-                            class="card-img-top" data-bs-toggle="modal" data-bs-target="#imageModal">
+                        <img src="{% static 'img/charts/pie_chart_solo_usage.png' %}"
+                            alt="Gráfico Barras horizontais Uso do Solo" class="card-img-top" data-bs-toggle="modal"
+                            data-bs-target="#imageModal">
                         <div class="card-body">
                             <h5 class="card-title">Uso do solo</h5>
                             <p class="card-text">Uso do solo (plantio X preservação)</p>
@@ -253,6 +258,7 @@
             </div>
         </div>
     </section>
+
 
     <section id="contato" class="rounded-section bg-light">
         <div class="container">
@@ -285,6 +291,8 @@
         </div>
     </div>
 
+
+
     <footer class="bg-light text-center py-4">
         <p>&copy; 2024 Brain Agriculture. Todos os direitos reservados.</p>
         <div>
@@ -314,6 +322,17 @@
                 document.getElementById('modalImage').src = imgSrc;
             });
         });
+    </script>
+
+
+    <!-- Charts -->
+    <script>
+        function downloadImages() {
+            fetch('/download-images/')
+                .then(response => {
+                    alert('Gráficos Gerados/atualizados com sucesso\nAtualize a página para visualizar os novos gráficos');
+                })
+        }
     </script>
 
 </body>
