@@ -6,9 +6,13 @@
 <p align="center">
    <a href='https://github.com/jonasaacampos'>
       <img alt="" src="https://img.shields.io/static/v1?color=blue&label=Python&message=Full-Stack&style=for-the-badge&logo=Python"/>
+      <img alt="" src="https://img.shields.io/static/v1?color=blue&label=aws&message=deploy&style=for-the-badge&logo=amazon"/>
+      <img alt="" src="https://img.shields.io/static/v1?color=blue&label=docker&message=deploy&style=for-the-badge&logo=docker"/>
       </a>
 </p>
 
+
+![alt text](static/img/brain_farm_cover_repo.png)
 
 
 <h1>Brain Farms</h1>
