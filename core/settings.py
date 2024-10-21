@@ -66,7 +66,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 
-
+"""
 # development local sqlite3
 DATABASES = {
     'default': {
@@ -74,9 +74,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-
 """
+
+
 # production postgresql
 
 DATABASES = {
@@ -90,7 +90,7 @@ DATABASES = {
        }
 }
 
-"""
+
 
 
 # Password validation
