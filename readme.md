@@ -90,12 +90,12 @@ Por padrão são geradas 10 inserções de usuário e 10 Inserções de Fazenda.
 
 ## Demo
 
-Veja ao vivo clicando **[aqui](http://174.129.116.242:8000)**
+Veja ao vivo clicando **[aqui](http://34.207.220.87:8000)**
 
 
 | Usuário       | Senha     |
 |---------------|-----------|
-| default_user  | teste1234 |
+| brainfarmer   | teste1234 |
 
 
 ## Checklist de Implementação
