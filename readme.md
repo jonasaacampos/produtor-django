@@ -46,6 +46,9 @@
 - [Obtendo o projeto](#obtendo-o-projeto)
   - [Popular Banco de dados](#popular-banco-de-dados)
 - [Demo](#demo)
+  - [Visão Geral](#visão-geral)
+  - [Mobile view admin](#mobile-view-admin)
+  - [Filtros e listagens](#filtros-e-listagens)
 - [Checklist de Implementação](#checklist-de-implementação)
   - [Cadastro de Produtor Rural](#cadastro-de-produtor-rural)
   - [Requisitos de Negócio](#requisitos-de-negócio)
@@ -97,6 +100,35 @@ Veja ao vivo clicando **[aqui](http://34.207.220.87:8000)**
 |---------------|-----------|
 | brainfarmer   | teste1234 |
 
+
+### Visão Geral
+
+<details>
+<summary><b>Demonstração tela inicial</b> (clique para expandir)</summary>
+
+![alt text](static/img/gifs/home_page.gif)
+
+</details>
+
+### Mobile view admin
+
+<details>
+<summary><b>Demonstração celular | cadastros</b> (clique para expandir)</summary>
+
+![alt text](static/img/gifs/cadastro_mobile.gif)
+
+</details>
+
+### Filtros e listagens
+
+<details>
+<summary><b>Demonstração filtro de cadstro | Listagem</b> (clique para expandir)</summary>
+
+![alt text](static/img/gifs/filtros.gif)
+
+</details>
+
+----------------
 
 ## Checklist de Implementação
 
@@ -163,7 +195,7 @@ Veja ao vivo clicando **[aqui](http://34.207.220.87:8000)**
 - [ ] Endpoints para interação com a aplicação
 - [ ] Configuração de repositório para `Continous Integraion - CI`
 - [ ] Inserção de gráficos dinâmicos dentro para o dashboard
-- [ ] Atualização de relatórios estáticos de forma assíncrona
+- [x] Atualização de relatórios estáticos de forma assíncrona
 
 </details>
 
